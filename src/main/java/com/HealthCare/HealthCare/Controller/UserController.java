@@ -44,6 +44,7 @@ public class UserController {
 
         //if pass all the validation the save the user
         try {
+            user.setMoney(1000);
             this.userRepositoy.save(user);
             response=new Response("Register");
             return response;
