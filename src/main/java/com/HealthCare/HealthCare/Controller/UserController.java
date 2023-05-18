@@ -54,6 +54,16 @@ public class UserController {
 
         }
     }
+    @PostMapping("/updateUser")
+    public String updateUser(@RequestBody User user){
+        try {
+            this.userRepositoy.save(user);
+            return "Success";
+        }catch (Exception e){
+            return "404";
+        }
+
+    }
     @PostMapping("/signin")
     public Response Login(@RequestBody User user){
         Optional<User> li=this.userRepositoy.findById(user.getEmail());
@@ -108,5 +118,6 @@ public class UserController {
         Optional<User> user=this.userRepositoy.findById(email);
         return user.get().getMoney();
     }
+
 
 }
